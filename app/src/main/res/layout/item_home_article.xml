@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_normal"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_item_home_article_icon"
+        android:layout_width="@dimen/avatar_width"
+        android:layout_height="@dimen/avatar_width"
+        android:layout_marginStart="@dimen/home_item_margin_left"
+        android:layout_marginTop="@dimen/home_item_margin_left"
+        android:src="@mipmap/avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_item_home_article_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_smaller"
+        android:layout_marginEnd="@dimen/home_item_margin_right"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="是时候为各式设备适配完善的输入支持了"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize_title"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_item_home_article_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_item_home_article_icon" />
+
+
+    <TextView
+        android:id="@+id/tv_item_home_article_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_smallest"
+        android:text="鸿洋"
+        android:textSize="@dimen/textSize_author"
+        app:layout_constraintStart_toStartOf="@id/tv_item_home_article_title"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_home_article_title" />
+
+    <TextView
+        android:id="@+id/tv_item_home_article_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="更后，我们团队一直在招人，欢迎联系&lt;a"
+        app:layout_constraintStart_toStartOf="@id/iv_item_home_article_icon"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_home_article_author" />
+
+    <TextView
+        android:id="@+id/tv_item_home_article_tag1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:background="@drawable/bg_tag"
+        android:padding="4dp"
+        android:text="公众号"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/iv_item_home_article_icon"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_home_article_desc" />
+
+    <TextView
+        android:id="@+id/tv_item_home_article_likes"
+        android:layout_width="14dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginBottom="@dimen/home_item_margin_left"
+        android:text="32"
+        android:textSize="@dimen/textSize_author"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/iv_item_home_article_icon"
+        app:layout_constraintTop_toBottomOf="@id/tv_item_home_article_tag1" />
+</androidx.constraintlayout.widget.ConstraintLayout>
