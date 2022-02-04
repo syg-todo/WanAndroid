@@ -2,10 +2,12 @@
 <resources>
     <dimen name="textSize_title">16sp</dimen>
     <dimen name="textSize_author">10sp</dimen>
+    <dimen name="textSize_text">12sp</dimen>
     <dimen name="home_item_margin_left">20dp</dimen>
     <dimen name="home_item_margin_right">20dp</dimen>
     <dimen name="avatar_width">30dp</dimen>
     <dimen name="margin_smallest">4dp</dimen>
     <dimen name="margin_normal">16dp</dimen>
     <dimen name="margin_smaller">8dp</dimen>
+    <dimen name="margin_bigger">24dp</dimen>
 </resources>

@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="bg_gray">#F6F5F5</color>
+    <color name="text_gray">#767676</color>
+    <color name="tv_bg_gray">#f5f5f7</color>
 </resources>

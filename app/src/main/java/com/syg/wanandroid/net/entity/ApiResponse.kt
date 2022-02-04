@@ -14,8 +14,6 @@ open class ApiResponse<T>(
     override fun toString(): String {
         return "ApiResponse(data=$data, errorCode=$errorCode, errorMsg=$errorMsg, error=$error)"
     }
-
-
 }
 
 data class ApiSuccessResponse<T>(val response: T) : ApiResponse<T>(data = response)
