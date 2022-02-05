@@ -1,5 +1,6 @@
 package com.syg.wanandroid.ui.adapters
 
+import android.util.ArrayMap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,26 @@ import com.syg.wanandroid.ui.adapters.data.OfficialAccount
 class HorizontalOfficialAccountAdapter :
     RecyclerView.Adapter<HorizontalOfficialAccountAdapter.ViewHolder>() {
 
+    var arrayMap: ArrayMap<Int, Int> = ArrayMap()
+
+    init {
+        arrayMap[408] = R.mipmap.icon_oa_hongyang
+        arrayMap[409] = R.mipmap.icon_oa_guolin
+        arrayMap[410] = R.mipmap.icon_oa_yugangshuo
+        arrayMap[411] = R.mipmap.icon_oa_chengxiangmoying
+        arrayMap[413] = R.mipmap.icon_oa_android_qunyinzhuan
+        arrayMap[414] = R.mipmap.icon_oa_code_xiaosheng
+        arrayMap[415] = R.mipmap.icon_oa_googledev
+        arrayMap[416] = R.mipmap.icon_oaqizhuoshe
+        arrayMap[417] = R.mipmap.icon_oa_meituan
+        arrayMap[420] = R.mipmap.icon_oa_gcssloop
+        arrayMap[421] = R.mipmap.icon_oa_hulianwangzhencha
+        arrayMap[427] = R.mipmap.icon_oa_susion_suixin
+        arrayMap[428] = R.mipmap.icon_oa_chengxuyifeiyuan
+        arrayMap[434] = R.mipmap.icon_oa_gityuan
+
+    }
+
     private var officialAccountList = emptyList<OfficialAccount>()
 
     fun setOfficialAccounts(officialAccountList: List<OfficialAccount>) {
@@ -20,7 +41,7 @@ class HorizontalOfficialAccountAdapter :
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var cover: ImageView = itemView.findViewById(R.id.iv_item_oa_icon)
-        var popularIndex: TextView = itemView.findViewById(R.id.tv_item_oa_popular_index)
+        var name: TextView = itemView.findViewById(R.id.tv_item_oa_name)
 
     }
 
@@ -33,8 +54,8 @@ class HorizontalOfficialAccountAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val officialAccount = officialAccountList[position]
-        holder.cover.setImageResource(R.mipmap.avatar)
-//        holder.popularIndex.text = officialAccount.popularIndex
+        arrayMap[officialAccount.id]?.let { holder.cover.setImageResource(it) }
+        holder.name.text = officialAccount.name
     }
 
     override fun getItemCount(): Int {

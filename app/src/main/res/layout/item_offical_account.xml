@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_official_account">
+    android:background="@drawable/bg_official_account"
+    android:foreground="@drawable/ripple"
+    android:clickable="true">
 
     <ImageView
         android:id="@+id/iv_item_oa_icon"
@@ -17,29 +19,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_item_oa_popular_index_title"
+        android:id="@+id/tv_item_oa_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_normal"
         android:text="@string/popular_index"
         android:textColor="@color/text_gray"
         android:textSize="@dimen/textSize_text"
-        app:layout_constraintEnd_toStartOf="@id/tv_item_oa_popular_index"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_item_oa_icon" />
 
-    <TextView
-        android:id="@+id/tv_item_oa_popular_index"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_smallest"
-        android:text="6.9K"
-        android:textColor="#34c959"
-        android:textSize="@dimen/textSize_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tv_item_oa_popular_index_title"
-        app:layout_constraintTop_toTopOf="@id/tv_item_oa_popular_index_title" />
 
     <TextView
         android:layout_width="0dp"
@@ -57,5 +47,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="@dimen/margin_smaller"
-        app:layout_constraintTop_toBottomOf="@id/tv_item_oa_popular_index_title" />
+        app:layout_constraintTop_toBottomOf="@id/tv_item_oa_name" />
 </androidx.constraintlayout.widget.ConstraintLayout>

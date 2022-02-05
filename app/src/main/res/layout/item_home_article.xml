@@ -39,14 +39,27 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_smallest"
         android:text="鸿洋"
-        android:textSize="@dimen/textSize_author"
+        android:textColor="@color/text_gray"
+        android:textSize="@dimen/textSize_text"
         app:layout_constraintStart_toStartOf="@id/tv_item_home_article_title"
         app:layout_constraintTop_toBottomOf="@id/tv_item_home_article_title" />
+
+    <TextView
+        android:id="@+id/tv_item_home_article_share_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_smallest"
+        android:text="2021年"
+        android:textColor="@color/text_gray"
+        android:textSize="@dimen/textSize_text"
+        app:layout_constraintBaseline_toBaselineOf="@id/tv_item_home_article_author"
+        app:layout_constraintStart_toEndOf="@id/tv_item_home_article_author" />
 
     <TextView
         android:id="@+id/tv_item_home_article_desc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_smaller"
         android:text="更后，我们团队一直在招人，欢迎联系&lt;a"
         app:layout_constraintStart_toStartOf="@id/iv_item_home_article_icon"
         app:layout_constraintTop_toBottomOf="@id/tv_item_home_article_author" />
@@ -54,12 +67,16 @@
     <TextView
         android:id="@+id/tv_item_home_article_tag1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginTop="@dimen/margin_normal"
         android:background="@drawable/bg_tag"
+        android:gravity="center"
         android:padding="4dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         android:text="公众号"
-        android:textSize="16sp"
+        android:textColor="#34c759"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@id/iv_item_home_article_icon"
         app:layout_constraintTop_toBottomOf="@id/tv_item_home_article_desc" />
 
