@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_oa_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="公众号" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/include_oa_content" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -6,32 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.syg.wanandroid.R
+import com.syg.wanandroid.net.WanAndroidRepository
+import com.syg.wanandroid.ui.HomeFragmentDirections
 import com.syg.wanandroid.ui.adapters.data.OfficialAccount
 
 class HorizontalOfficialAccountAdapter :
     RecyclerView.Adapter<HorizontalOfficialAccountAdapter.ViewHolder>() {
 
-    var arrayMap: ArrayMap<Int, Int> = ArrayMap()
-
-    init {
-        arrayMap[408] = R.mipmap.icon_oa_hongyang
-        arrayMap[409] = R.mipmap.icon_oa_guolin
-        arrayMap[410] = R.mipmap.icon_oa_yugangshuo
-        arrayMap[411] = R.mipmap.icon_oa_chengxiangmoying
-        arrayMap[413] = R.mipmap.icon_oa_android_qunyinzhuan
-        arrayMap[414] = R.mipmap.icon_oa_code_xiaosheng
-        arrayMap[415] = R.mipmap.icon_oa_googledev
-        arrayMap[416] = R.mipmap.icon_oaqizhuoshe
-        arrayMap[417] = R.mipmap.icon_oa_meituan
-        arrayMap[420] = R.mipmap.icon_oa_gcssloop
-        arrayMap[421] = R.mipmap.icon_oa_hulianwangzhencha
-        arrayMap[427] = R.mipmap.icon_oa_susion_suixin
-        arrayMap[428] = R.mipmap.icon_oa_chengxuyifeiyuan
-        arrayMap[434] = R.mipmap.icon_oa_gityuan
-
-    }
+    private val repository by lazy { WanAndroidRepository() }
 
     private var officialAccountList = emptyList<OfficialAccount>()
 
@@ -46,6 +31,7 @@ class HorizontalOfficialAccountAdapter :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+
         return ViewHolder(
             LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_offical_account, parent, false)
@@ -54,8 +40,16 @@ class HorizontalOfficialAccountAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val officialAccount = officialAccountList[position]
-        arrayMap[officialAccount.id]?.let { holder.cover.setImageResource(it) }
+        repository.getImageRes(officialAccount.id)?.let { holder.cover.setImageResource(it) }
         holder.name.text = officialAccount.name
+        holder.itemView.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToOfficialAccountFragment(
+                officialAccount.id,
+                officialAccount.name
+            )
+            it.findNavController()
+                .navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {

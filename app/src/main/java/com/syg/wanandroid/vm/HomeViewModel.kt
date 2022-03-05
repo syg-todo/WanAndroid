@@ -1,5 +1,6 @@
-package com.syg.wanandroid.base
+package com.syg.wanandroid.vm
 
+import com.syg.wanandroid.base.BaseViewModel
 import com.syg.wanandroid.net.WanAndroidRepository
 import com.syg.wanandroid.ui.adapters.data.OfficialAccountList
 import kotlinx.coroutines.CoroutineScope
@@ -17,7 +18,7 @@ class HomeViewModel : BaseViewModel() {
     private val _items = MutableStateFlow<MutableList<Any>>(mutableListOf())
     val items: StateFlow<MutableList<Any>> = _items.asStateFlow()
 
-    val itemList = arrayListOf<Any>()
+    private val itemList = arrayListOf<Any>()
     suspend fun requestNet() {
         CoroutineScope(Dispatchers.IO).launch {
             val articleList = async { repository.fetchHomeArticleFromNet() }

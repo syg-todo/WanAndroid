@@ -3,11 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
-    app:startDestination="@+id/first">
+    app:startDestination="@+id/homeFragment">
 
     <fragment
-        android:id="@+id/first"
+        android:id="@+id/homeFragment"
         android:name="com.syg.wanandroid.ui.HomeFragment"
         android:label="home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_officialAccountFragment"
+            app:destination="@id/officialAccountFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/officialAccountFragment"
+        android:name="com.syg.wanandroid.ui.OfficialAccountFragment"
+        android:label="officialAccount"
+        tools:layout="@layout/fragment_official_account">
+
+        <argument
+            android:name="oa_id"
+            app:argType="integer" />
+        <argument
+            android:name="oa_name"
+            app:argType="string" />
+    </fragment>
 </navigation>

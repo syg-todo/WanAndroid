@@ -1,6 +1,8 @@
 package com.syg.wanandroid.ui
 
 import android.os.Bundle
+import android.util.Log
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,52 +10,49 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.drakeet.multitype.MultiTypeAdapter
+import com.syg.wanandroid.R
 import com.syg.wanandroid.base.BaseFragment
-import com.syg.wanandroid.vm.HomeViewModel
-import com.syg.wanandroid.databinding.FragmentHomeBinding
+import com.syg.wanandroid.databinding.FragmentOfficialAccountArticleListBinding
+import com.syg.wanandroid.databinding.FragmentOfficialAccountBinding
 import com.syg.wanandroid.ui.adapters.binders.ArticleItemViewBinder
-import com.syg.wanandroid.ui.adapters.binders.HorizontalViewBinder
 import com.syg.wanandroid.util.launchWithLoading
+import com.syg.wanandroid.vm.OfficialAccountArticleListViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
+class OfficialAccountArticleListFragment(chapterId: Int) : BaseFragment() {
 
-class HomeFragment : BaseFragment() {
 
+    private val mViewModel by viewModels<OfficialAccountArticleListViewModel>()
 
-    private val mViewModel by viewModels<HomeViewModel>()
-
-    private lateinit var binding: FragmentHomeBinding
-    private lateinit var rvHome: RecyclerView
+    private lateinit var binding: FragmentOfficialAccountArticleListBinding
+    private lateinit var rvArticle: RecyclerView
     private lateinit var adapter: MultiTypeAdapter
 
     private lateinit var items: MutableList<Any>
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
-        rvHome = binding.rvHome
+        Log.d(TAG,"onCreateView")
+        binding = FragmentOfficialAccountArticleListBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
         initRecyclerView()
-        initData()
         initObserver()
-
+        requestNet()
         return binding.root
     }
 
     private fun initRecyclerView() {
         items = ArrayList()
+        rvArticle = binding.rvOfficialAccountArticleList
         adapter = MultiTypeAdapter()
         adapter.register(ArticleItemViewBinder())
-        adapter.register(HorizontalViewBinder())
-        rvHome.adapter = adapter
+        rvArticle.adapter = adapter
         adapter.items = items
-
     }
+
+    private fun requestNet() = launchWithLoading { mViewModel.requestNet() }
 
     private fun initObserver() {
         lifecycleScope.launch {
@@ -64,14 +63,8 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-
-    private fun initData() {
-        requestNet()
+    companion object{
+        val TAG = "OfficialAccountArticleListFragment"
     }
 
-    private fun requestNet() = launchWithLoading { mViewModel.requestNet() }
-
-    companion object {
-        private const val TAG = "HomeFragment"
-    }
 }
